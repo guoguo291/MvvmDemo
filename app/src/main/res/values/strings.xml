@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">MvvmDemo</string>
+    <string name="str_player_play">播放</string>
+    <string name="str_player_previous">上一首</string>
+    <string name="str_player_next">下一首</string>
+    <string name="str_player_title">标题</string>
+</resources>
