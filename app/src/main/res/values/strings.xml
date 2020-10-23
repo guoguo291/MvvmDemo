@@ -4,4 +4,6 @@
     <string name="str_player_previous">上一首</string>
     <string name="str_player_next">下一首</string>
     <string name="str_player_title">标题</string>
+    <string name="str_load_musiclist">加载音乐</string>
+    <string name="str_music_count">获取到歌曲数</string>
 </resources>
