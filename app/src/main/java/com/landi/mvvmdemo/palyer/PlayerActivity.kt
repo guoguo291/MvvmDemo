@@ -5,20 +5,37 @@ import android.os.Bundle
 import com.landi.mvvmdemo.R
 import kotlinx.android.synthetic.main.activity_player.*
 
-class PlayerActivity : AppCompatActivity(), IPlayerCallback {
+class PlayerActivity : AppCompatActivity() {
     private val playerPresenter by lazy {
         PlayerPresenter.instance
     }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_player)
-        playerPresenter.registercallback(this)
         initListener()
         initDataListener()
     }
 
     private fun initDataListener() {
-
+        playerPresenter.currentPlayMusic.addListener {
+            tv_title.text = it?.title
+            println("封面变化了：${it?.cover}")
+        }
+        playerPresenter.currentPlayState.addListener {
+            when (it) {
+                PlayerPresenter.PlayerState.PALYING -> {
+                    btn_player_playOrpause.text = "暂停"
+                    tv_title.text = tv_title.text.toString()+ "..."
+                }
+                else -> {
+                    btn_player_playOrpause.text = "播放"
+                    if (tv_title.text.contains("...")){
+                        tv_title.text=tv_title.text.substring(0,tv_title.text.length-3)
+                    }
+                }
+            }
+        }
     }
 
     private fun initListener() {
@@ -33,27 +50,4 @@ class PlayerActivity : AppCompatActivity(), IPlayerCallback {
         }
     }
 
-    override fun onDestroy() {
-        playerPresenter.unregistercallback(this)
-        super.onDestroy()
-    }
-    override fun onPlaying() {
-        btn_player_playOrpause.text="暂停"
-    }
-
-    override fun onTitleChanged(title: String) {
-        tv_title.text=title
-    }
-
-    override fun onProgressChanged(progerss: Int) {
-
-    }
-
-    override fun onCoverChanged(cover: String) {
-        println(cover)
-    }
-
-    override fun onPlayerPause() {
-        btn_player_playOrpause.text="播放"
-    }
 }
