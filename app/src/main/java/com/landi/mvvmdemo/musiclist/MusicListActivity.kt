@@ -3,14 +3,19 @@ package com.landi.mvvmdemo.musiclist
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.telephony.mbms.MbmsErrors
+import android.util.Log
 import com.landi.mvvmdemo.R
+import com.landi.mvvmdemo.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_music_list.*
 
-class MusicListActivity : AppCompatActivity() {
+class MusicListActivity : BaseActivity() {
     private val musicListPresenter by lazy {
         MusicListPresenter.instance
     }
-
+    init {
+        Log.i("guoj", "init:======= ")
+        addLifecycleListener(musicListPresenter)
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_music_list)
@@ -36,4 +41,5 @@ class MusicListActivity : AppCompatActivity() {
             musicListPresenter.getMusicList(page, size)
         }
     }
+
 }

@@ -1,9 +1,11 @@
 package com.landi.mvvmdemo.musiclist
 
+import android.util.Log
+import com.landi.mvvmdemo.ILifecycle
 import com.landi.mvvmdemo.domain.Music
 import com.landi.mvvmdemo.palyer.DataListenContainer
 
-class MusicListPresenter {
+class MusicListPresenter:ILifecycle {
     companion object{
         val instance by lazy {
             MusicListPresenter()
@@ -35,6 +37,30 @@ class MusicListPresenter {
             }
 
         })
+    }
+
+    override fun onCreate() {
+        Log.i("guoj","监听网络变化")
+    }
+
+    override fun onStart() {
+
+    }
+
+    override fun onResume() {
+
+    }
+
+    override fun onPause() {
+
+    }
+
+    override fun onStop() {
+
+    }
+
+    override fun onDestroy() {
+        Log.i("guoj","停止监听网络变化")
     }
 
 
