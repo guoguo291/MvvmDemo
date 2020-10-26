@@ -1,11 +1,11 @@
 package com.landi.mvvmdemo.base
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import com.landi.mvvmdemo.lifecycle.LifecycleProvider
 import com.landi.mvvmdemo.lifecycle.LifecycleState
 
-open class BaseActivity: AppCompatActivity(){
+open class BaseFragment:Fragment() {
     val lifecycleProvider by lazy {
         LifecycleProvider()
     }
@@ -16,8 +16,9 @@ open class BaseActivity: AppCompatActivity(){
 
     override fun onStart() {
         super.onStart()
-        lifecycleProvider.makeLifecycleState(LifecycleState.START)
+        lifecycleProvider.makeLifecycleState(LifecycleState.CREATE)
     }
+
     override fun onResume() {
         super.onResume()
         lifecycleProvider.makeLifecycleState(LifecycleState.RESUME)

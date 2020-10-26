@@ -1,4 +1,4 @@
-package com.landi.mvvmdemo
+package com.landi.mvvmdemo.lifecycle
 
 interface ILifecycle {
     fun onCreate()

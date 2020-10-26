@@ -14,7 +14,7 @@ class MusicListActivity : BaseActivity() {
     }
     init {
         Log.i("guoj", "init:======= ")
-        addLifecycleListener(musicListPresenter)
+        lifecycleProvider.addLifecycleListener(musicListPresenter)
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -1,11 +1,11 @@
 package com.landi.mvvmdemo.musiclist
 
 import android.util.Log
-import com.landi.mvvmdemo.ILifecycle
+import com.landi.mvvmdemo.lifecycle.ILifecycle
 import com.landi.mvvmdemo.domain.Music
 import com.landi.mvvmdemo.palyer.DataListenContainer
 
-class MusicListPresenter:ILifecycle {
+class MusicListPresenter: ILifecycle {
     companion object{
         val instance by lazy {
             MusicListPresenter()
