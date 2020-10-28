@@ -2,10 +2,11 @@ package com.landi.mvvmdemo.base
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.landi.mvvmdemo.lifecycle.ILifecycleOwner
 import com.landi.mvvmdemo.lifecycle.LifecycleProvider
 import com.landi.mvvmdemo.lifecycle.LifecycleState
 
-open class BaseActivity: AppCompatActivity(){
+open class BaseActivity: AppCompatActivity(),ILifecycleOwner{
     val lifecycleProvider by lazy {
         LifecycleProvider()
     }
@@ -36,5 +37,9 @@ open class BaseActivity: AppCompatActivity(){
     override fun onDestroy() {
         super.onDestroy()
         lifecycleProvider.makeLifecycleState(LifecycleState.DESTROY)
+    }
+
+    override fun getLifeProvider(): LifecycleProvider {
+        return lifecycleProvider
     }
 }

@@ -3,13 +3,19 @@ package com.landi.mvvmdemo.musiclist
 import android.util.Log
 import com.landi.mvvmdemo.lifecycle.ILifecycle
 import com.landi.mvvmdemo.domain.Music
+import com.landi.mvvmdemo.lifecycle.ILifecycleOwner
 import com.landi.mvvmdemo.palyer.DataListenContainer
 
-class MusicListPresenter: ILifecycle {
-    companion object{
-        val instance by lazy {
-            MusicListPresenter()
-        }
+/**
+ * 这里的MusicListPresenter未使用单例
+ */
+class MusicListPresenter(lifecycleOwner:ILifecycleOwner) {
+    val viewLifeImpl by lazy {
+        ViewLifeImpl()
+    }
+    init {
+        //给内部类注册生命周期监听
+        lifecycleOwner.getLifeProvider().addLifecycleListener(viewLifeImpl)
     }
     private val musicListModel by lazy {
         MusicListModel()
@@ -39,28 +45,34 @@ class MusicListPresenter: ILifecycle {
         })
     }
 
-    override fun onCreate() {
-        Log.i("guoj","监听网络变化")
-    }
+    /**
+     * 一个实现了生命周期接口的内部类
+     */
+    inner class ViewLifeImpl:ILifecycle{
+        override fun onCreate() {
+            Log.i("guoj","监听网络变化")
+        }
 
-    override fun onStart() {
+        override fun onStart() {
 
-    }
+        }
 
-    override fun onResume() {
+        override fun onResume() {
 
-    }
+        }
 
-    override fun onPause() {
+        override fun onPause() {
 
-    }
+        }
 
-    override fun onStop() {
+        override fun onStop() {
 
-    }
+        }
 
-    override fun onDestroy() {
-        Log.i("guoj","停止监听网络变化")
+        override fun onDestroy() {
+            Log.i("guoj","停止监听网络变化")
+        }
+
     }
 
 

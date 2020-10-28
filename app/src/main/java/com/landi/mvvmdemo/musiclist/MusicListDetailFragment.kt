@@ -7,12 +7,8 @@ import com.landi.mvvmdemo.palyer.PlayerPresenter
 
 class MusicListDetailFragment:BaseFragment() {
     val musicListPresenter by lazy {
-        MusicListPresenter()
+        MusicListPresenter(this)
     }
-    init {
-        lifecycleProvider.addLifecycleListener(musicListPresenter)
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }

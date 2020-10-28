@@ -10,12 +10,9 @@ import kotlinx.android.synthetic.main.activity_music_list.*
 
 class MusicListActivity : BaseActivity() {
     private val musicListPresenter by lazy {
-        MusicListPresenter.instance
+        MusicListPresenter(this)
     }
-    init {
-        Log.i("guoj", "init:======= ")
-        lifecycleProvider.addLifecycleListener(musicListPresenter)
-    }
+    
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_music_list)

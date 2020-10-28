@@ -2,10 +2,11 @@ package com.landi.mvvmdemo.base
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
+import com.landi.mvvmdemo.lifecycle.ILifecycleOwner
 import com.landi.mvvmdemo.lifecycle.LifecycleProvider
 import com.landi.mvvmdemo.lifecycle.LifecycleState
 
-open class BaseFragment:Fragment() {
+open class BaseFragment:Fragment(),ILifecycleOwner {
     val lifecycleProvider by lazy {
         LifecycleProvider()
     }
@@ -37,5 +38,9 @@ open class BaseFragment:Fragment() {
     override fun onDestroy() {
         super.onDestroy()
         lifecycleProvider.makeLifecycleState(LifecycleState.DESTROY)
+    }
+
+    override fun getLifeProvider(): LifecycleProvider {
+        return lifecycleProvider
     }
 }
