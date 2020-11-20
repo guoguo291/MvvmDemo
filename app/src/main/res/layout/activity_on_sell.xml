@@ -5,17 +5,43 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".taobao.OnSellActivity">
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/contentListRv"
+    <com.lcodecore.tkrefreshlayout.TwinklingRefreshLayout
+        android:id="@+id/view_refresh_content"
+        android:visibility="gone"
+        android:background="@color/gray"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:paddingEnd="4dp"
-        android:paddingStart="4dp"
-        android:overScrollMode="never"
-        android:background="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_height="match_parent">
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/contentListRv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:overScrollMode="never"
+            android:paddingStart="4dp"
+            android:paddingEnd="4dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </com.lcodecore.tkrefreshlayout.TwinklingRefreshLayout>
+
+
+    <include
+        android:id="@+id/view_empty"
+        layout="@layout/activity_empty"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <include
+        android:id="@+id/view_error"
+        android:visibility="gone"
+        layout="@layout/activity_error"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <include
+        android:id="@+id/view_loading"
+        layout="@layout/activity_loading"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

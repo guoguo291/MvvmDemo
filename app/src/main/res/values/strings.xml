@@ -6,4 +6,7 @@
     <string name="str_player_title">标题</string>
     <string name="str_load_musiclist">加载音乐</string>
     <string name="str_music_count">获取到歌曲数</string>
+    <string name="text_network_error_tips">网络异常,点击重新加载</string>
+    <string name="text_empty_tips">找不到内容了</string>
+    <string name="text_loading_tips">正在拼命加载中...</string>
 </resources>
